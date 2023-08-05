@@ -1,26 +1,21 @@
-
-import React,{useState} from "react";
+import React from "react";
 import './../styles/App.css';
-import Modal from "./Modal";
+import Tooltip from "./Tooltip";
 
 const App = () => {
-  const [showModal, setModalShow] = useState(false);
-
-  function handleCloseModal() {
-    setModalShow(false);
-  }
-
   return (
-    <div id="main">
-       <button onClick={()=>setModalShow(true)}>Open Modal</button>
-       <Modal show={showModal} onClose={handleCloseModal}>
-          <div className="modal">
-            <h2>Modal Content</h2>
-            <p>This is the content of the modal.</p>
-          </div>
-       </Modal>
+    <div>
+      <h2 class="tooltip">
+        <Tooltip text="This is a tooltip">Hover over me</Tooltip>
+      </h2>
+      <br />
+      <p class="tooltip">
+        <Tooltip text="This is another tooltip">
+          Hover over me to see another tooltip
+        </Tooltip>
+      </p>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
