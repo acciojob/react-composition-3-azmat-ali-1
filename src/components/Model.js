@@ -1,19 +1,17 @@
-import React,{ useState } from "react";
+import React, { useState } from "react";
 
-const Modal = ({show, onClose, children}) =>{
+const Tooltip = ({ text, children }) => {
+  const [showTooltip, setShowTooltip] = useState(false);
 
-    if(!show){
-      return null;
-    }
-  
-    return (
-      <div className="modal-overlay" onClick={onClose}>
-          <button className="modal-close" onClick={onClose}>
-            Close
-          </button>
-          {children}
-      </div>
-    );
+  return (
+    <div
+      onMouseEnter={() => setShowTooltip(true)}
+      onMouseLeave={() => setShowTooltip(false)}
+    >
+      {children}
+      {showTooltip && <div className="tooltiptext">{text}</div>}
+    </div>
+  );
 };
 
-export default Modal;
+export default Tooltip;
